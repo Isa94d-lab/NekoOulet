@@ -1,12 +1,5 @@
 {
   "productos": [
-    {
-      "id": "bbb1",
-      "code": "32535",
-      "name": "Cocacola",
-      "stock": "4",
-      "price": "3.000",
-      "image": "no hay"
-    }
+    
   ]
 }

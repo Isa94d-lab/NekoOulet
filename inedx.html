@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
-    <!-- Agregamos type="module" para que el archivo JS sea reconocido como módulo -->
     <script type="module" src="appi.js" defer></script>
     <title>NekoOutlet</title>
 </head>
@@ -19,6 +18,7 @@
                 <li class="nav-link dropdown">
                     <a href="#" id="productos-btn">Productos</a>
                     <ul class="dropdown-menu">
+                        <button class="button nav-link1" id="crear-btn">Crear</button> <!-- Este es el botón que activará el formulario -->
                         <li class="nav-link1"><a href="#conteiner1">Crear</a></li>
                         <li class="nav-link1"><a href="conteiner2">Editar</a></li>
                         <li class="nav-link1"><a href="conteiner3">Eliminar</a></li>
@@ -30,36 +30,33 @@
         </nav>
     </div>
 
-    <div class="conteiner1" id="conteiner1">
+    <div class="conteiner1" id="conteiner1" style="display: none;">
         <div class="cuadrado">
         <h2>-CREAR-</h2>
-        <!-- Input para que el usuario ingrese el codigo del producto para agregarlo -->
         <label for="new_codeProduct" class="form-label">Code: </label>
         <input type="number" id="new_code" class="form-control form-control1" placeholder="Codigo del producto">
 
-        <!-- Nombre del producto -->
         <label for="new_nameProduct" class="form-label">Nombre: </label>
         <input type="text" id="new_nameProduct" class="form-control form-control1" placeholder="Nombre del producto">
 
-        <!-- Stock del producto -->
         <label for="new_stockProduct" class="form-label">Stock: </label>
         <input type="text" id="new_stockProduct" class="form-control form-control1" placeholder="Stock del producto">
 
-        <!-- Dirección del usuario -->
         <label for="new_priceProduct" class="form-label">Price: </label>
         <input type="text" id="new_priceProduct" class="form-control form-control1" placeholder="Precio por unidad">
 
-        <!-- Email del usuario -->
         <label for="new_imgProduct" class="form-label">Image: </label>
         <input type="email" id="new_imgProduct" class="form-control form-control1" placeholder="Ingresa URL de imagen del producto">
-    
-        <!-- Botón para enviar los datos -->
+
         <div class="orden">
-        <button class="crear" id="btnCrear">Crear</button>
+            <button class="crear" id="btnCrear">Crear</button>
         </div>
         </div>
     </div>
 
+
+
     
+
 </body>
 </html>

@@ -17,7 +17,7 @@ export function productosAlmacenados() {
     
             // Enviar los datos a JSON Server
             await fetch("http://localhost:3000/productos", {
-                method: "POST", // Agregar en lugar de reemplazar
+                method: "POST", // Agregar2 en lugar de reemplazar
                 headers: {
                     "Content-Type": "application/json"
                 },
