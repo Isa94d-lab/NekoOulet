@@ -157,4 +157,86 @@ li.nav-link1:hover a {
 }
 
 
+/* ---------------------- CONTEINER 1 / FORMULARIO ---------------------- */
+
+.conteiner1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .cuadrado {
+    background-color: white;
+    height: 520px;
+    width: 625px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+
+  /* Estilos para las etiquetas de formularios */
+  label.form-label {
+    display: flex;
+    margin-bottom: .5rem;
+    font-weight: 600;
+    margin-top: .5rem;
+    justify-content: center;
+  }
   
+  /* Estilos para los campos de entrada (input) */
+  .form-control {
+    display: block;
+    padding: .375rem .75rem;
+    width: 500px;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+
+  .form-control1 {
+    width: 500px;
+  }
+  
+  /* Estilos para el texto debajo del campo de entrada */
+  div.form-text {
+    display: block;
+    font-size: .875rem;
+    color: #6c757d;
+    margin-top: .25rem;
+  }
+
+  /* Estilo para el texto arriba de los input */
+  .form-label {
+    display: flex;
+    align-items: flex-start;
+    text-align: left !important;
+  }
+
+  button {
+    display: inline-block;
+    padding: .375rem .75rem; /* Similar al padding de los campos de entrada */
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ced4da; /* Borde similar al de los campos */
+    border-radius: .25rem;
+    background-color: #007bff; /* Color de fondo (azul) */
+    color: #fff; /* Color del texto */
+    transition: background-color 0.2s ease, border-color 0.2s ease; /* Efecto de transición para hover */
+    margin-top: 10px;
+  }
+  
+  /* Estilo para el estado hover del botón */
+  button:hover {
+    background-color: #0056b3; /* Fondo más oscuro al hacer hover */
+    border-color: #004085; /* Borde más oscuro al hacer hover */
+  }
+
