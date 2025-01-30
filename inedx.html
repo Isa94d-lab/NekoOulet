@@ -31,33 +31,163 @@
         </nav>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
     <!-- Formulario para CREAR / AGREGAR un nuevo producto -->
     <div class="conteiner1" id="conteiner1" style="display: none;">
         <div class="cuadrado cuadrado1">
-        <h2>-CREAR-</h2>
-        <generate-code></generate-code>
-        <script src="js/generateCode.js"></script>
+            <h2>-CREAR-</h2>
+            <generate-code></generate-code>
+            <script src="js/generateCode.js"></script>
 
-        <label for="new_nameProduct" class="form-label">Nombre: </label>
-        <input type="text" id="new_nameProduct" class="form-control form-control1" placeholder="Nombre del producto">
+            <label for="new_nameProduct" class="form-label">Nombre: </label>
+            <input type="text" id="new_nameProduct" class="form-control form-control1" placeholder="Nombre del producto">
 
-        <label for="new_stockProduct" class="form-label">Stock: </label>
-        <input type="text" id="new_stockProduct" class="form-control form-control1" placeholder="Stock del producto">
+            <label for="new_stockProduct" class="form-label">Stock: </label>
+            <input type="text" id="new_stockProduct" class="form-control form-control1" placeholder="Stock del producto">
 
-        <label for="new_priceProduct" class="form-label">Price: </label>
-        <input type="text" id="new_priceProduct" class="form-control form-control1" placeholder="Precio por unidad">
+            <label for="new_priceProduct" class="form-label">Price: </label>
+            <input type="text" id="new_priceProduct" class="form-control form-control1" placeholder="Precio por unidad">
 
-        <label for="new_imgProduct" class="form-label">Image: </label>
-        <input type="email" id="new_imgProduct" class="form-control form-control1" placeholder="Ingresa URL de imagen del producto">
+            <label for="new_imgProduct" class="form-label">Image: </label>
+            <input type="email" id="new_imgProduct" class="form-control form-control1" placeholder="Ingresa URL de imagen del producto">
 
-        <div class="orden">
-            <button class="crear" id="btnCrear">Crear</button>
-        </div>
+            <div class="orden">
+                <button class="crear" id="btnCrear">Crear</button>
+            </div>
         </div>
     </div>
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Formulario para EDITAR un producto ya ingresado -->
+    <div class="conteiner conteiner2" id="conteiner2">
+        <div class="cuadrado2">
+            <h2>-EDITAR-</h2>
+            <table>
+                <tr>
+                    <td>
+                        <label for="product-select" class="form-label">ID de producto:</label>
+                        <select class="form-control form-select2" id="product-select">
+                            <option selected>Selecciona un código de producto</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name-product" class="form-label">Producto seleccionado:</label>
+                        <input class="form-control form-select2" type="text" id="name-product" value="No se ha ingresado un producto">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="stock-product" class="form-label">Stock: </label>
+                        <input type="text" id="stock-product" class="form-control form-control1" value="No se ha ingresado un producto">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="price-product" class="form-label">Precio por unidad:</label>
+                        <input class="form-control form-select2" type="text" id="price-product" value="No se ha ingresado un producto">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="new_imgProduct" class="form-label">Image: </label>
+                        <input type="text" id="img-product" class="form-control form-control1" value="No se ha ingresado un producto">
+                    </td>
+                </tr>
+            </table>
+  
+            <button id="guardarBtn2">Editar</button>
+
+        </div>
+    </div>
+
+    <style>
+        label.form-label {
+            display: flex;
+            margin-bottom: .5rem;
+            font-weight: 600;
+            margin-top: .5rem;
+            justify-content: center;
+        }
+
+        .form-control {
+            display: block;
+            padding: .375rem .75rem;
+            width: 500px;
+            font-size: 1rem;
+            line-height: 1.5;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+        }
+
+        .form-control1 {
+            width: 500px;
+        }
+
+        button {
+            display: inline-block;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        button:disabled {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.65;
+        }
+
+        .cuadrado2 {
+            background-color: white;
+            margin-top: 10px;
+            padding-top: 10px;
+            height: 500px; 
+            width: 625px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+    </style>
 
 </body>
 </html>

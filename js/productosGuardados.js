@@ -1,52 +1,97 @@
+export async function productosAlmacenados() {
 
-export function productosAlmacenados() {
-    document.addEventListener("DOMContentLoaded", () => {
-        const btnCrear = document.querySelector(".crear");
-    
-        btnCrear.addEventListener("click", async (event) => {
-            event.preventDefault(); // Evita que la página se recargue
+    // Llamamos al JSON SERVER ----------------------
+    try {
+        const response = await fetch("http://localhost:3000/productos");
+        if (!response.ok) throw new Error("Error al obtener productos");
 
-            const codigoFactura = document.querySelector("generate-code")
-                .shadowRoot.querySelector("#codigo").value;
-    
-            // Capturamos los valores de los inputs
-            const nuevoProducto = {
-                id: codigoFactura,
-                name: document.getElementById("new_nameProduct").value,
-                stock: document.getElementById("new_stockProduct").value,
-                price: document.getElementById("new_priceProduct").value,
-                image: document.getElementById("new_imgProduct").value
-            };
-    
-            // Enviar los datos a JSON Server
-            await fetch("http://localhost:3000/productos", {
-                method: "POST", 
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(nuevoProducto)
-            });
-    
-            // Limpiamos el formulario para volver a ingresar otro producto
-            document.getElementById("new_code").value = "";
-            document.getElementById("new_nameProduct").value = "";
-            document.getElementById("new_stockProduct").value = "";
-            document.getElementById("new_priceProduct").value = "";
-            document.getElementById("new_imgProduct").value = "";
-    
-            mostrarProductos(); // Actualiza la lista de productos en pantalla
-        });
-    
-        // Función para obtener y mostrar los productos almacenados
-        async function mostrarProductos() {
-            const response = await fetch("http://localhost:3000/productos");
-            const productos = await response.json();
-    
-            // Aquí puedes mostrar los productos en una tabla o lista
-            console.log("Productos almacenados:", productos);
+        const productos = await response.json();
+        console.log("Productos obtenidos:", productos); // Verifica si se están obteniendo
+
+        const select = document.getElementById("product-select");
+        if (!select) {
+            console.error("No se encontró el <select> con id 'product-select'");
+            return;
         }
-    
-        mostrarProductos(); // Muestra los productos cuando se carga la página
-    });
-    
+
+        // Mostrar ID que se encuentra en el JSON SERVER ----------------------
+
+        // Limpiar opciones previas
+        select.innerHTML = '<option selected>Selecciona un código de producto</option>';
+
+        // Agregar opciones al select, para mostrarlas al usuario
+        productos.forEach(producto => {
+            const option = document.createElement("option");
+            option.value = producto.id;  // Guardamos el ID del producto para mostrarlo
+            option.textContent = `${producto.id}`;
+            select.appendChild(option);
+        });
+
+        // Evento para actualizar los campos al seleccionar un producto
+        select.addEventListener("change", () => {
+            const productoSeleccionado = productos.find(p => p.id === select.value);
+
+            // Mostrar informacion del producto segun el id seleccionado
+            if (productoSeleccionado) {
+                document.getElementById("name-product").value = productoSeleccionado.name;
+                document.getElementById("price-product").value = productoSeleccionado.price;
+                document.getElementById("stock-product").value = productoSeleccionado.stock;
+                document.getElementById("img-product").value = productoSeleccionado.image;
+            } else {
+                document.getElementById("name-product").value = "No se ha ingresado un producto";
+                document.getElementById("price-product").value = "No se ha ingresado un producto";
+                document.getElementById("stock-product").value = "No se ha ingresado un producto";
+                document.getElementById("img-product").value = "No se ha ingresado un producto";
+            }
+        });
+
+        // Funcionalidad para editar el producto ---------------------------
+        const btnGuardar = document.getElementById("guardarBtn2");
+        btnGuardar.addEventListener("click", async () => {
+            const idProducto = select.value;
+            const name = document.getElementById("name-product").value;
+            const stock = document.getElementById("stock-product").value;
+            const price = document.getElementById("price-product").value;
+            const image = document.getElementById("img-product").value;
+
+            // Validar si se seleccionó un producto y si los campos no están vacíos
+            if (!idProducto || !name || !stock || !price || !image) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+
+            const productoEditado = {
+                id: idProducto,
+                name,
+                stock,
+                price,
+                image
+            };
+
+            try {
+                // Enviar la solicitud PUT para actualizar el producto
+                const updateResponse = await fetch(`http://localhost:3000/productos/${idProducto}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(productoEditado)
+                });
+
+                if (!updateResponse.ok) throw new Error("Error al actualizar el producto");
+
+                // Mostrar mensaje de éxito y actualizar la interfaz
+                alert("Producto actualizado correctamente");
+
+                // Recargar la lista de productos sin perder la selección
+                productosAlmacenados();
+
+            } catch (error) {
+                console.error("Error actualizando el producto:", error);
+            }
+        });
+
+    } catch (error) {
+        console.error("Error obteniendo productos:", error);
+    }
 }
