@@ -10,5 +10,3 @@ document.getElementById("crear-btn").addEventListener("click", function(event) {
     event.preventDefault(); // Evita que se recargue la página
     toggleFormulario(); // Llama a la función que muestra/oculta el formulario
 });
-
-mostr

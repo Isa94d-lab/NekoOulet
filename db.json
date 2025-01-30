@@ -1,18 +1,5 @@
 {
   "productos": [
-    {
-      "id": "1738210322562",
-      "name": "Cocacola",
-      "stock": "13",
-      "price": "7.000",
-      "image": "su"
-    },
-    {
-      "id": "1738209610702",
-      "name": "Papitas",
-      "stock": "6",
-      "price": "2.000",
-      "image": "xd"
-    }
+
   ]
 }

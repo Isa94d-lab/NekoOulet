@@ -5,6 +5,68 @@ export async function productosAlmacenados() {
         const response = await fetch("http://localhost:3000/productos");
         if (!response.ok) throw new Error("Error al obtener productos");
 
+
+
+        // Asegúrate de que el botón "Crear" tenga el ID correcto en el HTML
+        const btnCrear = document.getElementById('btnCrear');
+
+        btnCrear.addEventListener('click', async function() {
+            const name = document.getElementById('new_nameProduct').value;
+            const stock = document.getElementById('new_stockProduct').value;
+            const price = document.getElementById('new_priceProduct').value;
+            const image = document.getElementById('new_imgProduct').value;
+
+            // Validación básica para asegurarse de que los campos no estén vacíos
+            if (!name || !stock || !price || !image) {
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            const nuevoProducto = {
+                name: name,
+                stock: stock,
+                price: price,
+                image: image,
+                id: Date.now() // Puedes usar la fecha actual para generar un ID único
+            };
+
+            try {
+                // Enviar la solicitud POST para agregar el producto
+                const response = await fetch('http://localhost:3000/productos', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(nuevoProducto),
+                });
+
+                if (!response.ok) throw new Error('Error al crear el producto');
+                alert('Producto creado con éxito');
+            } catch (error) {
+                console.error('Error creando el producto:', error);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         const productos = await response.json();
         console.log("Productos obtenidos:", productos); // Verifica si se están obteniendo
 
