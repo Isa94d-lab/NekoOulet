@@ -16,25 +16,27 @@
             <!-- Menú de navegación -->
             <ul class="nav-links">
                 <li class="nav-link dropdown">
-                    <a href="#" id="productos-btn">Productos</a>
+                    <a href="#" id="productos-btn" class="title">Productos</a>
                     <ul class="dropdown-menu">
-                        <button class="button nav-link1" id="crear-btn">Crear</button> <!-- Este es el botón que activará el formulario -->
+                        <!-- Opciones del menu desplegable -->
+                        <button class="nav-link1 button" id="crear-btn">Crear</button> <!-- Este es el botón que activará el formulario -->
                         <li class="nav-link1"><a href="#conteiner1">Crear</a></li>
                         <li class="nav-link1"><a href="conteiner2">Editar</a></li>
                         <li class="nav-link1"><a href="conteiner3">Eliminar</a></li>
                         <li class="nav-link1"><a href="conteiner4">Listar</a></li>
                     </ul>
                 </li>
-                <li class="nav-link"><a href="#conteiner2">Vender</a></li>
+                <li class="nav-link"><a href="#conteiner2" class="title">Vender</a></li>
             </ul>
         </nav>
     </div>
 
+    <!-- Formulario para CREAR / AGREGAR un nuevo producto -->
     <div class="conteiner1" id="conteiner1" style="display: none;">
-        <div class="cuadrado">
+        <div class="cuadrado cuadrado1">
         <h2>-CREAR-</h2>
-        <label for="new_codeProduct" class="form-label">Code: </label>
-        <input type="number" id="new_code" class="form-control form-control1" placeholder="Codigo del producto">
+        <generate-code></generate-code>
+        <script src="js/generateCode.js"></script>
 
         <label for="new_nameProduct" class="form-label">Nombre: </label>
         <input type="text" id="new_nameProduct" class="form-control form-control1" placeholder="Nombre del producto">
@@ -53,7 +55,6 @@
         </div>
         </div>
     </div>
-
 
 
     

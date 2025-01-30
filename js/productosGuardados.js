@@ -5,10 +5,13 @@ export function productosAlmacenados() {
     
         btnCrear.addEventListener("click", async (event) => {
             event.preventDefault(); // Evita que la página se recargue
+
+            const codigoFactura = document.querySelector("generate-code")
+                .shadowRoot.querySelector("#codigo").value;
     
             // Capturamos los valores de los inputs
             const nuevoProducto = {
-                code: document.getElementById("new_code").value,
+                id: codigoFactura,
                 name: document.getElementById("new_nameProduct").value,
                 stock: document.getElementById("new_stockProduct").value,
                 price: document.getElementById("new_priceProduct").value,
@@ -17,7 +20,7 @@ export function productosAlmacenados() {
     
             // Enviar los datos a JSON Server
             await fetch("http://localhost:3000/productos", {
-                method: "POST", // Agregar2 en lugar de reemplazar
+                method: "POST", 
                 headers: {
                     "Content-Type": "application/json"
                 },
